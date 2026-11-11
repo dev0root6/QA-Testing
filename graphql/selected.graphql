@@ -1,0 +1,24 @@
+query GetSelectedByCompany($name: String!) {
+    getSelectedByCompany(name: $name) {
+        company {
+            name
+            package
+        }
+        user {
+            name
+            USN
+            email
+            branch
+            section
+            CGPA
+        }
+    }
+}
+
+mutation CreateSelected($input: SelectedInput!) {
+    createSelected(input: $input) {
+        user {
+            USN
+        }
+    }
+}

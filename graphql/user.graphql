@@ -1,0 +1,83 @@
+query GetAllStudentsCard {
+    allStudentDetails {
+        USN
+        email
+        name
+        branch
+        section
+        CGPA
+    }
+}
+
+query GetStudentDetails($usn: ID!) {
+    studentDetails(USN: $usn) {
+        name
+        email
+        USN
+        branch
+        section
+        year
+        CGPA
+        tenth
+        twelth
+        backlogs
+        eligible
+        placed
+        package
+    }
+}
+
+query GetProfileDetails($usn: ID!) {
+    user(USN: $usn) {
+        role
+        details {
+            name
+            USN
+            branch
+            section
+            email
+            year
+            CGPA
+            tenth
+            twelth
+            backlogs
+            eligible
+            placed
+            package
+            applied {
+                company {
+                    name
+                    package
+                    type
+                }
+            }
+            selected {
+                company {
+                    name
+                    package
+                    type
+                }
+            }
+        }
+    }
+}
+
+mutation CreateUser($input: UserInput!) {
+    createUser(input: $input) {
+        USN
+    }
+}
+
+query IsStudentEligible($usn: ID!, $company: String!) {
+    isStudentEligible(USN: $usn, company: $company)
+}
+
+query HasStudentApplied($usn: ID!, $company: String!) {
+    hasStudentApplied(USN: $usn, company: $company)
+}
+
+mutation UpdateStudent($input: UserDetailsUpdateInput!) {
+    updateUserDetails(input: $input) {
+        USN
+    }
+}

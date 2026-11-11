@@ -1,0 +1,87 @@
+query GetCompanies {
+    companies {
+        name
+        type
+        arrival_date
+        package
+        year
+        eligibility {
+            CGPA
+            backlogs
+        }
+    }
+}
+
+query GetCompanyDetailsWithStudentEligibility($name: String!, $usn: ID!) {
+    company(name: $name) {
+        name
+        type
+        package
+        arrival_date
+        eligibility {
+            CGPA
+            backlogs
+            tenth
+            twelth
+        }
+    }
+    isStudentEligible(USN: $usn, company: $name)
+}
+
+query GetCompanyDetails($name: String!) {
+    company(name: $name) {
+        name
+        type
+        package
+        arrival_date
+        year
+        eligibility {
+            CGPA
+            backlogs
+            tenth
+            twelth
+        }
+    }
+}
+
+mutation CreateCompany($input: CompanyInput!) {
+    createCompany(input: $input) {
+        name
+    }
+}
+
+query GetSelectedForAllCompanies {
+    companies {
+        name
+        package
+        selected {
+            user {
+                USN
+                name
+            }
+        }
+    }
+}
+
+query GetSelectedPerCompany($name: String!) {
+    company(name: $name) {
+        name
+        package
+        selected {
+            user {
+                name
+                USN
+                email
+                branch
+                section
+                CGPA
+            }
+        }
+    }
+}
+
+mutation UpdateCompany($input: CompanyUpdateInput!) {
+    updateCompany(input: $input) {
+        name
+    }
+}

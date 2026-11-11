@@ -1,19 +1,50 @@
 {
-  "name": "aits-placement-portal",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "db:reset": "node scripts/reset-db.mjs"
-  },
-  "dependencies": {
-    "marked": "14.1.4",
-    "next": "15.5.29",
-    "pg": "8.13.1",
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
-  }
+    "name": "placement-management",
+    "version": "1.0.0",
+    "private": true,
+    "description": "College placement management portal (Next.js + GraphQL + Prisma + PostgreSQL)",
+    "license": "MIT",
+    "scripts": {
+        "dev": "next dev",
+        "build": "prisma generate && node scripts/setup-db.js && next build",
+        "start": "next start",
+        "db:setup": "node scripts/setup-db.js",
+        "db:seed": "node scripts/setup-db.js --seed-only",
+        "gen": "graphql-codegen --config codegen.yml"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "@apollo/client": "3.6.9",
+        "@chakra-ui/icons": "1.1.7",
+        "@chakra-ui/react": "1.8.8",
+        "@emotion/react": "11.10.4",
+        "@emotion/styled": "11.10.4",
+        "@prisma/client": "5.22.0",
+        "apexcharts": "3.35.5",
+        "apollo-server-micro": "3.13.0",
+        "bcryptjs": "^2.4.3",
+        "date-fns": "^2.28.0",
+        "framer-motion": "5.6.0",
+        "graphql": "16.6.0",
+        "jsonwebtoken": "^9.0.2",
+        "jwt-decode": "3.1.2",
+        "micro": "^9.4.1",
+        "next": "12.3.7",
+        "prisma": "5.22.0",
+        "react": "17.0.2",
+        "react-apexcharts": "1.4.0",
+        "react-dom": "17.0.2",
+        "react-hook-form": "7.34.2",
+        "react-icons": "4.4.0"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "^2.4.6",
+        "@types/jsonwebtoken": "^9.0.5",
+        "@types/node": "^18.19.0",
+        "@types/react": "17.0.37",
+        "@types/react-dom": "^17.0.11",
+        "typescript": "^4.9.5"
+    }
 }
